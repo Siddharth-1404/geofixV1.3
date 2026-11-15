@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GeoFix - My Wallet</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Top Navbar -->
+  <header class="navbar">
+    <div class="nav-left">
+      <img src="image_2.png" alt="GeoFix Logo" class="nav-logo-img" style="width: 32px; height: 32px; margin-right: 10px; object-fit: contain;">
+      <span class="logo-text" style="font-size: 16px;">GeoFix</span>
+      <span class="badge-dark" style="font-size: 10px; letter-spacing: 1px;">WALLET</span>
+    </div>
+    
+    <div class="nav-right">
+      <span id="welcome-text" class="light-text" style="font-size: 13px; font-weight: 600; margin-right: 12px; display: none;"></span>
+      
+      <!-- Naye Links (Wallet aur Logout) -->
+      <button class="nav-btn no-print" onclick="window.location.href='rewards.html'" style="font-size: 13px; font-weight: 600; color: var(--amber-solid);">Wallet</button>
+      <button id="theme-btn" class="nav-btn no-print" style="font-size: 16px;">☼</button>
+      <button class="nav-btn no-print" onclick="window.location.href='index.html'" style="font-size: 13px;">Logout</button>
+    </div>
+  </header>
+
+  <!-- Rewards Container -->
+  <div class="admin-container animate-fade-in" style="max-width: 900px; padding-top: 40px;">
+    
+    <div class="page-header" style="margin-bottom: 32px;">
+      <h2 style="font-size: 22px; font-weight: 600;">Civic Wallet</h2>
+      <p class="subtitle" style="font-size: 14px;">Redeem your earned points for campus utilities.</p>
+    </div>
+
+    <!-- Pro-Level Score Card (No Emojis) -->
+    <div class="card" style="margin-bottom: 40px; border-left: 4px solid var(--amber-solid); padding: 32px;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <div style="font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Available Balance</div>
+          <div style="font-size: 48px; font-weight: 600; line-height: 1;">175 <span style="font-size: 18px; color: var(--text-muted); font-weight: 400;">Pts</span></div>
+        </div>
+        <div style="text-align: right;">
+          <div class="badge-outline" style="border-color: var(--amber-solid); color: var(--amber-solid);">Campus Guardian Tier</div>
+          <div style="font-size: 12px; color: var(--text-muted); margin-top: 8px;">ID: RK2P26BZB51</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Redeem Store -->
+    <h3 style="margin-bottom: 16px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted);">Available Utilities</h3>
+    
+    <!-- Minimalist SaaS Grid -->
+    <div class="kpi-grid">
+      
+      <!-- Sleek Card 1 -->
+      <div class="kpi-card" style="padding: 24px; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+        <div>
+          <span class="badge-dark" style="background: var(--bg-input); color: var(--text-muted); font-size: 10px; margin-bottom: 16px; display: inline-block;">F&B VOUCHER</span>
+          <h4 style="font-size: 16px; margin-bottom: 8px; font-weight: 600;">Free Campus Coffee</h4>
+          <p class="subtext" style="font-size: 13px; line-height: 1.5; margin-bottom: 24px;">Redeemable at University Main Canteen. Valid for 24 hours.</p>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-subtle); padding-top: 16px;">
+          <span style="font-size: 14px; font-weight: 600;">100 Pts</span>
+          <button class="btn-dark-outline" style="padding: 6px 16px; font-size: 12px;">Redeem</button>
+        </div>
+      </div>
+
+      <!-- Sleek Card 2 -->
+      <div class="kpi-card" style="padding: 24px; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+        <div>
+          <span class="badge-dark" style="background: var(--bg-input); color: var(--text-muted); font-size: 10px; margin-bottom: 16px; display: inline-block;">ACADEMIC</span>
+          <h4 style="font-size: 16px; margin-bottom: 8px; font-weight: 600;">50 Pages Print Quota</h4>
+          <p class="subtext" style="font-size: 13px; line-height: 1.5; margin-bottom: 24px;">Use at Central Library Printing Station. Standard A4 B&W.</p>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-subtle); padding-top: 16px;">
+          <span style="font-size: 14px; font-weight: 600;">150 Pts</span>
+          <button class="btn-dark-outline" style="padding: 6px 16px; font-size: 12px;">Redeem</button>
+        </div>
+      </div>
+      
+      <!-- Sleek Card 3 (Locked) -->
+      <div class="kpi-card" style="padding: 24px; display: flex; flex-direction: column; justify-content: space-between; height: 100%; opacity: 0.6;">
+        <div>
+          <span class="badge-dark" style="background: var(--bg-input); color: var(--text-muted); font-size: 10px; margin-bottom: 16px; display: inline-block;">MERCHANDISE</span>
+          <h4 style="font-size: 16px; margin-bottom: 8px; font-weight: 600;">University Hoodie</h4>
+          <p class="subtext" style="font-size: 13px; line-height: 1.5; margin-bottom: 24px;">Official Campus Merchandise. Collect from Admin Block.</p>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-subtle); padding-top: 16px;">
+          <span style="font-size: 14px; font-weight: 600; color: var(--text-muted);">800 Pts</span>
+          <button class="btn-submit" style="padding: 6px 16px; font-size: 12px; background: var(--bg-input); color: var(--text-muted); border: none; cursor: not-allowed;">Locked</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+  <!-- Global Tutorial Floating Button (Bottom Left) -->
+  <button id="tutorial-btn" class="floating-tutorial-btn no-print">
+    <span style="font-size: 10px;">▶</span> Watch Tutorial
+  </button>
+
+  <!-- Tutorial Video Modal (Popup) -->
+  <div id="tutorial-modal" class="modal-overlay no-print">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <h3 style="font-size: 16px; font-weight: 600;">How to use GeoFix</h3>
+        <button id="close-tutorial" class="btn-close">&times;</button>
+      </div>
+      
+      <div class="modal-body">
+        <!-- Sleek Video Placeholder -->
+        <div class="video-placeholder">
+          <div class="play-circle">▶</div>
+          <p class="subtext" style="margin-top: 16px;">System Walkthrough Demo (1:30s)</p>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

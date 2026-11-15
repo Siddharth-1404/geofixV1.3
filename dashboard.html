@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GeoFix - Responsive Light/Dark</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Top Navbar -->
+  <header class="navbar">
+    <div class="nav-left">
+      <img src="image_2.png" alt="GeoFix Logo" class="nav-logo-img" style="width: 32px; height: 32px; margin-right: 10px; object-fit: contain;">
+      <span class="logo-text" style="font-size: 16px;">GeoFix</span>
+    </div>
+    
+    <div class="nav-right">
+      <!-- Community Feed Button -->
+      <button class="nav-btn no-print" onclick="window.location.href='feed.html'" style="color: #10B981; border: 1px solid #10B981; font-weight: 600; margin-right: 8px;">
+        🌟 Campus Feed
+      </button>
+      
+      <button id="theme-btn" class="nav-btn no-print" style="font-size: 16px;">☼</button>
+      <button class="nav-btn no-print" onclick="window.location.href='index.html'" style="font-size: 13px;">Logout</button>
+    </div>
+  </header>
+
+  <!-- Modern SaaS Dashboard Layout -->
+  <div class="saas-dashboard animate-fade-in">
+    
+    <!-- Left Column: Primary Workspace -->
+    <div class="workspace-main">
+      <div class="section-header">
+        <h2 style="font-size: 24px; font-weight: 700; margin-bottom: 4px;">Create New Ticket</h2>
+        <p class="light-text" style="font-size: 14px;">Log campus facility issues for immediate resolution.</p>
+      </div>
+
+      <div class="modern-card">
+        
+        <!-- STEP 1: Smart Camera & AI Trigger -->
+        <label class="form-label" style="display: block; margin-bottom: 12px;">1. Capture Issue Photo</label>
+        
+        <!-- Upload Box / Camera Trigger -->
+        <div id="upload-box" style="margin-bottom: 20px; border: 1px solid var(--border-subtle); padding: 16px; border-radius: 8px;">
+            <div id="upload-content">
+                <div style="position: relative;">
+                    <!-- capture="environment" for mobile back camera -->
+                    <input type="file" id="ticket-photo" accept="image/*" capture="environment" style="position: absolute; width: 100%; height: 100%; opacity: 0; cursor: pointer; z-index: 10;" onchange="updatePhotoLabel()">
+                    
+                    <div id="photo-label-box" style="background: rgba(16, 185, 129, 0.05); border: 1px dashed #10B981; color: #15803d; padding: 16px; border-radius: 8px; text-align: center; font-size: 14px; font-weight: 500; transition: 0.3s;">
+                        📷 Tap to Open Camera / Gallery
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Processing Animation -->
+            <div id="ai-processing" class="hidden" style="text-align: center; padding: 16px;">
+                <p style="color: #d97706; font-weight: 600; font-size: 14px; margin: 0 0 4px 0;">🤖 AI Analyzing Image...</p>
+                <p style="font-size: 12px; color: var(--text-muted); margin: 0;">Detecting issue category & severity</p>
+            </div>
+        </div>
+
+        <!-- AI Verdict & Confirmation Box -->
+        <div id="ai-review-box" class="hidden" style="margin-bottom: 24px; background: rgba(248, 250, 252, 0.8); padding: 16px; border-radius: 8px; border: 1px solid var(--border-subtle);">
+            <h4 style="margin: 0 0 10px 0; font-size: 14px; color: var(--text-main);">🧠 AI Verdict</h4>
+            <p style="font-size: 13px; margin: 0 0 16px 0;">Detected Issue: <span style="font-weight: 600; color: #b45309;">Plumbing Leakage (High Priority)</span></p>
+            
+            <div id="ai-actions" style="display: flex; gap: 10px;">
+                <button type="button" onclick="confirmAI()" style="flex: 1; background: #10B981; color: white; border: none; padding: 10px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 600;">✓ Confirm</button>
+                <button type="button" onclick="editManual()" style="flex: 1; background: transparent; color: var(--text-main); border: 1px solid var(--border-subtle); padding: 10px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 500;">✎ Edit Manual</button>
+            </div>
+        </div>
+
+        <!-- Manual Category Select -->
+        <div id="manual-category-box" class="hidden" style="margin-bottom: 24px;">
+            <label style="font-size: 13px; font-weight: 600; display: block; margin-bottom: 8px;">Select Category Manually:</label>
+            <select style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid var(--border-subtle); background: var(--bg-input); color: var(--text-main); font-family: inherit;">
+                <option>Plumbing</option>
+                <option>Electrical</option>
+                <option>IT & Wi-Fi</option>
+                <option>Carpentry</option>
+            </select>
+        </div>
+
+        <!-- STEP 2: Location Verification -->
+        <!-- STEP 2: Location Verification -->
+        <label class="form-label" style="margin-top: 24px;">2. Location Verification</label>
+        
+        <!-- Hidden QR Camera Input -->
+        <input type="file" id="qr-camera-input" accept="image/*" capture="environment" style="display: none;" onchange="processQR()">
+
+        <div class="segmented-control" style="margin-top: 12px;">
+          <div id="btn-qr" class="segment-btn" onclick="setLoc('QR')">
+            <span>📷</span> Scan QR
+          </div>
+          <div id="btn-gps" class="segment-btn" onclick="setLoc('GPS')">
+            <span>📍</span> Auto GPS
+          </div>
+        </div>
+
+        <!-- Location Feedback -->
+        <div class="input-area" style="margin-top: 16px; min-height: 60px;">
+          
+          <!-- QR Result (Pehle se hidden rahega) -->
+          <div id="qr-result" class="success-box hidden" style="padding: 12px; border-radius: 6px; border: 1px solid rgba(16, 185, 129, 0.2); background: rgba(16, 185, 129, 0.05);">
+            <!-- Data JS se aayega -->
+          </div>
+
+          <!-- GPS Result (Pehle se hidden rahega) -->
+          <div id="gps-result" class="success-box hidden" style="padding: 12px; border-radius: 6px; border: 1px solid rgba(59, 130, 246, 0.2); background: rgba(59, 130, 246, 0.05); color: #3B82F6;">
+            <!-- Data JS se aayega -->
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div style="margin-top: 32px; border-top: 1px solid var(--border-subtle); padding-top: 24px;">
+          <button id="final-submit-btn" class="btn-submit" onclick="submitSmartTicket()" style="width: 100%; font-size: 15px; padding: 14px; font-weight: 600; border-radius: 8px;">Submit Ticket</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Right Column: User Context & Gamification -->
+    <div class="workspace-side">
+      
+      <!-- Profile Widget -->
+      <div class="modern-card profile-widget" style="padding: 24px;">
+        <div class="profile-header" style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
+          <div class="avatar-circle">SK</div>
+          <div>
+            <h3 style="font-size: 16px; font-weight: 600; margin: 0;">Siddharth Kumar</h3>
+            <p class="light-text" style="font-size: 12px; margin: 2px 0 0 0;">ID: RK2P26BZB51</p>
+          </div>
+        </div>
+        <div class="badge-outline" style="width: fit-content; font-size: 11px;">B.Tech CSE - 1st Year</div>
+      </div>
+
+      <!-- Civic Score Widget -->
+      <div class="modern-card wallet-widget" onclick="goToPage('rewards.html')" style="cursor: pointer; background: linear-gradient(145deg, var(--bg-card) 0%, var(--bg-input) 100%);">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+          <div>
+            <p class="light-text" style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Civic Balance</p>
+            <div style="font-size: 36px; font-weight: 700; line-height: 1; color: var(--amber-solid);">
+              <span id="user-score">175</span> <span style="font-size: 14px; font-weight: 500; color: var(--text-muted);">Pts</span>
+            </div>
+          </div>
+          <div class="icon-box" style="background: rgba(245, 158, 11, 0.1); color: var(--amber-solid); padding: 10px; border-radius: 8px;">
+            🏆
+          </div>
+        </div>
+        <div style="margin-top: 16px; font-size: 12px; color: var(--text-main); display: flex; justify-content: space-between; align-items: center;">
+          <span>View Rewards Store</span>
+          <span>➔</span>
+        </div>
+      </div>
+
+      <!-- Recent Activity -->
+      <div class="modern-card" style="padding: 24px;">
+        <h3 style="font-size: 14px; margin-bottom: 16px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Recent Reports</h3>
+        <div class="activity-list">
+          <div class="activity-item" style="display: flex; justify-content: space-between; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--border-subtle);">
+            <span style="font-size: 13px;">WiFi Down (Block 28)</span>
+            <span class="step-status text-amber" style="font-size: 10px; padding: 2px 6px;">Pending</span>
+          </div>
+          <div class="activity-item" style="display: flex; justify-content: space-between;">
+            <span style="font-size: 13px;">Broken Desk (Room 401)</span>
+            <span class="step-status text-green" style="font-size: 10px; padding: 2px 6px;">Resolved</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Custom Toast Notification Box -->
+  <div id="toast-box" class="toast hidden">
+    <span id="toast-message">Message yahan aayega</span>
+  </div>
+
+  <!-- Global Tutorial Floating Button (Coming Soon) -->
+  <button class="floating-tutorial-btn no-print" onclick="showToast('Tutorial video will be deployed in Version 2.0')">
+    <span style="font-size: 10px;">▶</span> Watch Tutorial
+  </button>
+
+  <!-- JS Logic -->
+  <script src="script.js"></script>
+</body>
+</html>

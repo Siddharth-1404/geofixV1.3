@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GeoFix - Login</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"> -->
+</head>
+<body>
+
+  <!-- Background Image aur uske upar ek dark layer (overlay) -->
+  <div class="login-bg-image"></div>
+  <div class="login-overlay"></div>
+
+  <!-- Theme Toggle Button -->
+  <!-- Top Right Floating Actions -->
+  <div style="position: absolute; top: 20px; right: 20px; display: flex; gap: 12px; z-index: 100;">
+    <button onclick="goToPage('feed.html')" class="nav-btn" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; color: var(--text-main); backdrop-filter: blur(10px); cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+      💡 Campus Visions
+    </button>
+    <button id="theme-btn" class="nav-btn floating-theme-btn" style="position: static; margin: 0; transform: none;">☼</button>
+  </div>
+
+  <!-- Login Card Container -->
+  <div class="login-container">
+    
+    <div class="login-card">
+      
+      <!-- Top Logo Section -->
+      <div class="login-header">
+        <img src="image_2.png" alt="GeoFix Logo" class="nav-logo-img" style="width: 32px; height: 32px; margin-right: 10px; object-fit: contain;">
+        <h2>GeoFix Gateway</h2>
+        <p class="subtitle">Smart Campus Facilities Portal</p>
+      </div>
+      
+      <!-- Login Form Starts Here -->
+      <form id="login-form">
+        
+        <!-- Username Box -->
+        <div class="form-group">
+          <label>Username</label>
+          <input type="text" id="username" class="input-field" placeholder="Enter 'admin' or student ID" required>
+        </div>
+        
+        <!-- Password Box -->
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="password" class="input-field" placeholder="Enter Password" required>
+        </div>
+        
+        <!-- Submit Button -->
+        <button type="submit" class="btn-submit">Login To Portal</button>
+        
+      </form>
+      
+      <!-- Demo Instructions -->
+      <!-- Demo Instructions & Public Feed Route -->
+      <div class="login-footer">
+        <p>Type <strong>admin</strong> for Admin Panel.</p>
+        <p style="margin-bottom: 24px;">Type anything else for Student Dashboard.</p>
+        
+        <div style="padding-top: 20px; border-top: 1px solid var(--border-subtle);">
+            <p class="light-text" style="font-size: 13px; margin-bottom: 12px;">Want to propose a campus improvement?</p>
+            <button type="button" onclick="goToPage('feed.html')" style="background: transparent; border: 1px solid #10B981; color: #10B981; padding: 10px 20px; border-radius: 24px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s ease; width: 100%;">
+                Explore Public Feed ➔
+            </button>
+        </div>
+      </div>
+
+    </div>
+    
+  </div>
+  <!-- Custom Toast Notification Box -->
+<div id="toast-box" class="toast hidden">
+  <span id="toast-message">Message yahan aayega</span>
+</div>
+
+
+
+
+
+
+<!-- Global Tutorial Floating Button (Bottom Left) -->
+<!-- Global Tutorial Floating Button (Coming Soon) -->
+  <button class="floating-tutorial-btn no-print" onclick="showToast('Tutorial video will be deployed in Version 2.0')">
+    <span style="font-size: 10px;">▶</span> Watch Tutorial
+  </button>
+
+  <!-- JavaScript File Link -->
+  <script src="script.js"></script>
+</body>
+</html>
